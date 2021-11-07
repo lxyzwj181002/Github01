@@ -1,0 +1,38 @@
+整合开发：ssm
+springmvc+spring+mybatis
+springmvc:视图层，界面层，主要负责接受请求，显示处理结果。
+spring:业务层，管理service，dao，工具类对象
+mybatis:访问数据库，持久层
+
+用户发起请求<--->springmvc接收请求<--->spring的service对象<--->mybatis对象
+
+有两个容器：
+springmvc：管理controller对象
+spring：管理dao，service和工具类对象的
+
+把需要使用的对象交给需要的容器来管理
+
+springmvc是spring容器的子容器，springmvc可以使用spring的对象。
+
+实现步骤：
+1、使用springdb库，student表
+id	int	11
+name	varchar	80
+age	int	11
+2、新建maven项目
+3、加入依赖，包括spring，springmvc，mybatis，jackson，mysql驱动
+   jsp，servlet，druid数据库连接池依赖
+4、写web.xml
+   1、注册DispatherServlet中央调度器，为了创建springmvc才能创建controller对象
+      创建servlet接收用户的请求。
+   2、注册spring监听器：ContextLoaderLisener,目的为了创建spring容器对象，才能创建service，dao对象
+   3、字符集过滤器，解决乱码
+5、创建controller，dao，service，实体类包
+6、写springmvc，spring，mybatis配置文件
+   1、springmvc配置文件
+   2、spring配置文件
+   3、mybatis主配置文件
+   4、数据库的属性配置文件
+7、写程序代码，dao，dao接口，service和实现类，controller，实体类
+8、界面
+本次主要做学生表的增删改查
